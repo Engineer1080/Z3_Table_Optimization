@@ -5,6 +5,7 @@ The aim of this project is to solve a simplified version of a very common proble
 scheduling, production planning, resource allocation, etc. The problem is to find integer values with which to fill
 an m × n table, ensuring that given constraints on the values are met, and in such a way that the sum of the
 values in the table is minimal.
+
 For example, fill in a 2 × 3 table A such that
 • A[i][j] ≤ 10
 • A[i][j] > −5
@@ -19,6 +20,7 @@ ranging from 1 to n. Thus, the last condition is an abbreviation for the list
 A table satisfying these constraints is
 −3 2 −1
 10 4 3
+
 This is, however, not a minimal-sum solution. An actual minimal sum solution to this problem is, for example:
 −4 −2 0
 6 4 2
@@ -28,11 +30,12 @@ stored. The solution is given as a list of lists. For example, the above solutio
  tbl = solve(”tbldsc.txt”)
  tbl
 [[-4, -2, 0], [6, 4, 2]]
+
 It can happen that a problem has no solution. For example
 2, 3;
 A[i][j] > 0 ;
 A[1][1] + A[1][2] = 0 ;
-1
+
 is such a problem. The function solve should in such a case return the empty list and print a message:
  tbl = solve(”impossible.txt”)
 No solution found!
@@ -67,7 +70,8 @@ A[1][i] < A[2][j]
 A[i][i + k] >= 10
 A[1][2] + A[i][j] >= 3 * A[2][2]
 (A[1][1] - A[2][1])*(A[2][2] - A[1][2]) <= A[i][j]
-2
+
+
 When free variables appear in the indices, they are assumed to be universally quantified over the range of allowed
 values. All variables are strictly positive. For example, if m = 2 and n = 4, the first in the above examples is
 interpreted as
@@ -97,6 +101,7 @@ A[1][3] >= 10
 A[1][4] >= 10
 A[2][3] >= 10
 A[2][4] >= 10
+
 Table Specification
 The solve function reads the table specification from a file that must have the following format:
 • it starts with the table dimensions, two strictly positive natural numbers, separated by a comma and followed by a semicolon: m, n;
